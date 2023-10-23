@@ -78,7 +78,9 @@ In conclusion, the development of "Dicey Showdown" has been a journey filled wit
 
 ### Contributors 
 Vishwa Patel
+
 Sandali Nemmaniwar
+
 Benjamin Dunlap
 
 

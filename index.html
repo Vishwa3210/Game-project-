@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicey Showdown</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nosifer">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Creepster">
+    <style>
+        body {
+            font-family: 'Nosifer', cursive;
+            background-image: url("bg.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            align-items: center;
+            display: flex;
+        }
+        .dice {
+            margin: 5px;
+            display: inline-block;
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px #232931;
+            color: #d80d0d;
+            text-align: center;
+        }
+        h3 {
+            font-size: 2rem;
+            color: #ea1a1a;
+            font-family: 'Creepster', cursive;
+        }
+        p {
+            font-size: 2rem;
+            color: #3c083d;
+            font-family: 'Creepster';
+        }
+        img {
+            width: 100%;
+        }
+        .butn {
+            background: #b0d5e8;
+            font-family: 'Nosifer', cursive;
+            border-radius: 7px;
+            color: #3c083d;
+            font-size: 30px;
+            padding: 16px 16px;
+            text-decoration: none;
+            margin: 5px;
+            transition: background-color 0.5s;
+        }
+        .butn:hover {
+            background: #9fb2cb;
+            text-decoration: none;
+        }
+        .side-panel {
+            background: #064f4e5c;
+            padding: 25px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            color: #4ecca3;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .score-title {
+            font-size: 2.0rem;
+            margin-bottom: 15px;
+        }
+        .score-entry {
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+        .winner {
+            color: #4ecca3;
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to the Game</h2>
+    <div class="container">
+        <div class="dice">
+            <h3 class="Player1">Player 1</h3>
+            <img class="img1" src="dice6.png">
+        </div>
+        <div class="dice">
+            <h3 class="Player2">Player 2</h3>
+            <img class="img2" src="dice6.png">
+        </div>
+        <div class="dice">
+            <h3 class="Player3">Player 3</h3>
+            <img class="img3" src="dice6.png">
+        </div>
+        <div class="dice">
+            <h3 class="Player4">Player 4</h3>
+            <img class="img4" src="dice6.png">
+        </div>
+    </div>
+    <div class="container">
+        <div class="side-panel">
+            <h2 class="score-title">Scores</h2>
+            <p class="score-entry" id="Player1Score">Player 1: 0</p>
+            <p class="score-entry" id="Player2Score">Player 2: 0</p>
+            <p class="score-entry" id="Player3Score">Player 3: 0</p>
+            <p class="score-entry" id="Player4Score">Player 4: 0</p>
+            <p class="winner" id="winner"></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="timer">
+            <p id="timer">Time remaining: 10:00</p>
+        </div>
+    </div>
+    <div class="container bottom">
+        <button type="button" class="butn" onClick="rollTheDice()">
+            Roll the Dice
+        </button>
+    </div>
+    <div class="container bottom">
+        <button type="button" class="butn" onClick="editNames()">
+            Edit Names
+        </button>
+    </div>
+    <div class="container bottom">
+        <button type="button" class="butn" onClick="toggleMusic()">
+            Music(On/Off)
+        </button>
+    </div>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="background_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        // Player names and scores
+        var players = [
+            { name: "Player 1", score: 0 },
+            { name: "Player 2", score: 0 },
+            { name: "Player 3", score: 0 },
+            { name: "Player 4", score: 0 }
+        ];
+        // Timer variables
+        var timerInterval;
+        var minutes = 3;
+        var seconds = 0;
+        function updateTimerDisplay() {
+            var timerDisplay = document.getElementById("timer");
+            timerDisplay.textContent = `Time remaining: ${minutes}:${seconds < 3 ? '0' : ''}${seconds}`;
+        }
+        function startTimer() {
+            timerInterval = setInterval(function () {
+                if (minutes === 0 && seconds === 0) {
+                    clearInterval(timerInterval);
+                    resetGame();
+                } else {
+                    if (seconds === 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        seconds--;
+                    }
+                    updateTimerDisplay();
+                }
+            }, 1000); // 1 second
+        }
+        function resetGame() {
+            // Reset player scores and other game elements
+            for (var i = 0; i < players.length; i++) {
+                players[i].score = 0;
+                document.getElementById("Player" + (i + 1) + "Score").innerHTML = players[i].name + ": 0";
+            }
+            // Reset the winner display
+            document.getElementById("winner").innerHTML = "";
+            // Reset the dice images
+            for (var i = 1; i <= 4; i++) {
+                document.querySelector(".img" + i).setAttribute("src", "dice6.png");
+            }
+            // Restart the timer
+            minutes = 3;
+            seconds = 0;
+            updateTimerDisplay();
+            startTimer();
+        }
+        // Function to change the player names
+        function editNames() {
+            for (var i = 0; i < players.length; i++) {
+                var newName = prompt("Change " + players[i].name + " name");
+                if (newName !== null) {
+                    players[i].name = newName;
+                    document.querySelector(".Player" + (i + 1)).innerHTML = newName;
+                }
+            }
+        }
+        // Function to roll the dice
+        function rollTheDice() {
+            // ... (existing code)
+            var playerScores = [];
+
+            for (var i = 0; i < players.length; i++) {
+                var randomNumber = Math.floor(Math.random() * 6) + 1;
+                playerScores.push(randomNumber);
+
+                document.querySelector(".img" + (i + 1)).setAttribute("src", "dice" + randomNumber + ".png");
+            }
+
+            var maxScore = Math.max(...playerScores);
+            var winningPlayers = [];
+
+            for (var i = 0; i < players.length; i++) {
+                if (playerScores[i] === maxScore) {
+                    players[i].score++;
+                    document.getElementById("Player" + (i + 1) + "Score").innerHTML = players[i].name + ": " + players[i].score;
+                    winningPlayers.push(players[i].name);
+                }
+            }
+
+            if (winningPlayers.length === 1) {
+                document.getElementById("winner").innerHTML = winningPlayers[0] + " WINS!";
+            } else {
+                document.getElementById("winner").innerHTML = "It's a Draw!";
+            }
+
+            // Check if the timer is running
+            if (!timerInterval) {
+                startTimer();
+            }
+        }
+        // Function to toggle background music
+        var backgroundMusic = document.getElementById("backgroundMusic");
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            } else {
+                backgroundMusic.pause();
+            }
+        }
+        // Initialize the timer display
+        updateTimerDisplay();
+    </script>
+</body>
+</html>
+

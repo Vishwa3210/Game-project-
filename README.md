@@ -11,7 +11,10 @@ Let us delve into the regulatory framework governing "Dicey Showdown," ensuring 
 3. Scoring: The quest for points hinges on the capriciousness of the dic`e. Players are rewarded with a single point exclusively if their respective dice manifest a higher number than the rest; conversely, all other outcomes result in a score of 0 for the given round.
 4. Winning Conditions: The contest unfolds until a collective decision to conclude is reached. The distinction of victor is bestowed upon the player who accumulates the highest total score. In the event of a tie, where two or more participants share the pinnacle of scoring, the game concludes in a thrilling draw.
 5. Music Toggle: Having the ability to turn on or off music will improve your game experience. 
-6. Timed Game: Players must strategically roll the dice to accumulate points as the clock runs out, but after three minutes, the game automatically resets the scores to zero. 
+6. Timed Game: Players must strategically roll the dice to accumulate points as the clock runs out, but after three minutes, the game automatically resets the scores to zero.
+
+### Rules: 
+Each player can add his name using the Edit Name option and select ok or cancel accordingly. When the Roll Dice button is pressed the timer starts and the scores are shown in the scoreboard as well as it is indicated on the dice face. Apart from that we can add music from the button if it should be turned on or not.
 
 
 ### Technology stack:
@@ -39,6 +42,7 @@ Creating "Dicey Showdown" has been an enlightening journey marked by successes a
 Design Goals and Vision:
 
 At the outset of this project, our vision was clear - to craft a dice game that would capture the essence of excitement and unpredictability while offering an intuitive and engaging user experience. We wanted to keep the design simple yet visually appealing, allowing players to focus on the thrill of the dice rolls. This vision served as a guiding principle throughout the design and development phases. We initially wireframes our designs in lucidchart in order to know the aesthetic appealing version. As we continued, we added more features to it like setting up the timer, adding up the music button and so on.
+
 
 Challenges Faced:
 
@@ -71,6 +75,12 @@ Lessons Learned:
 3. Collaboration is Strength: The strength of a collaborative team cannot be overstated. Open lines of communication, the willingness to learn from one another, and shared ownership of the project all contributed to our success.
 
 In conclusion, the development of "Dicey Showdown" has been a journey filled with valuable experiences. Challenges were met with determination, and our collaborative efforts resulted in a game that we are proud of. 
+
+### Contributors 
+Vishwa Patel
+Sandali Nemmaniwar
+Benjamin Dunlap
+
 
 
 

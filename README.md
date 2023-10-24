@@ -80,6 +80,7 @@ Lessons Learned:
 In conclusion, the development of "Dicey Showdown" has been a journey filled with valuable experiences. Challenges were met with determination, and our collaborative efforts resulted in a game that we are proud of. 
 
 Contributors:
+
 Vishwa Patel
 
 Sandali Nemmaniwar

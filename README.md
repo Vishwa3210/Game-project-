@@ -81,10 +81,13 @@ In conclusion, the development of "Dicey Showdown" has been a journey filled wit
 
 Contributors:
 Vishwa Patel
+
 Sandali Nemmaniwar
+
 Benjamin Dunlap
 
 Github Link to the project: https://github.com/Vishwa3210/Game-project-
+
 Online hosting of the game: https://vishwa3210.github.io/Game-project-/
 
 
